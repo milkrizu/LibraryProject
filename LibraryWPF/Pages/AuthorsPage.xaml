@@ -1,0 +1,63 @@
+﻿<Page x:Class="LibraryWPF.Pages.AuthorsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryWPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthorsPage">
+
+    <Grid>
+        <!-- Определяем две строки в Grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Строка для текста и кнопок -->
+            <RowDefinition Height="Auto"/>
+            <!-- Строка для кнопок -->
+            <RowDefinition Height="*"/>
+            <!-- Строка для DataGrid -->
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок "Авторы" -->
+        <TextBlock Text="Авторы" 
+                   Grid.Row="0" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="10" 
+                   Foreground="White"/>
+
+        <!-- Панель инструментов с кнопками и ComboBox -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click" Margin="5" Height="45"/>
+            <Button x:Name="btnEdit" Content="Редактировать" Click="btnEdit_Click" Margin="5" Height="45"/>
+            <Button x:Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Margin="5" Height="45"/>
+
+            <!-- Кнопка "Главное меню" -->
+            <Button x:Name="btnMainMenu" Content="Главное меню" Click="btnMainMenu_Click" Margin="5" Height="45"/>
+
+            <!-- ComboBox для выбора сортировки -->
+            <ComboBox x:Name="cbSort" SelectionChanged="cbSort_SelectionChanged" Margin="10,0,0,0" Height="30" Width="29" Background="White">
+                <ComboBoxItem Content="Без сортировки" Tag="None" Background="LightGray"/>
+                <ComboBoxItem Content="От А до Я" Tag="AZ" Background="LightGray"/>
+                <ComboBoxItem Content="От Я до А" Tag="ZA" Background="LightGray"/>
+            </ComboBox>
+
+            <!-- Кнопка для отображения статистики -->
+            <Button x:Name="btnShowStatistics" Content="Статистика" Click="btnShowStatistics_Click" Margin="10,0,0,0" Height="45"/>
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="2" x:Name="dataGrid" AutoGenerateColumns="False" Margin="10" VerticalAlignment="Top" Height="Auto" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Автор" Binding="{Binding AuthorID}" Width="Auto"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="Auto"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=d}" Width="*"/>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

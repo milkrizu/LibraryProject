@@ -1,0 +1,59 @@
+﻿<Window x:Class="LibraryWPF.EditAndAdd.EditLoanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryWPF.EditAndAdd"
+        mc:Ignorable="d"
+         Title="Редактировать выдачу книги" Height="450" Width="800"
+        WindowState="Maximized">
+
+    <Grid Background="{StaticResource SecondaryColor}" Margin="0,0,0,-51">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Редактирование выдачи книги" 
+                   Grid.Row="0" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="10"/>
+
+        <!-- Форма редактирования -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20,22,20,0">
+            <TextBlock Text="ID Книги:" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtBookID" Margin="0,0,0,10" Height="35"/>
+            <TextBlock Text="ID Читателя:" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtReaderID" Margin="0,0,0,10" Height="35"/>
+            <TextBlock Text="Дата выдачи:" Margin="0,0,0,5"/>
+            <DatePicker x:Name="dpLoanDate" Margin="0,0,0,10" Height="49" Background="White"/>
+            <TextBlock Text="Дата возврата:" Margin="0,0,0,5"/>
+            <DatePicker x:Name="dpReturnDate" Margin="0,0,0,10" Height="49" Background="White"/>
+
+            <!-- Панель для кнопок "Сохранить" и "Назад" -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="Сохранить" 
+                        Click="btnSave_Click" 
+                        Width="150" 
+                        Height="40" 
+                        Background="#FF69B4" 
+                        Foreground="White" 
+                        BorderBrush="#FF1493" 
+                        BorderThickness="2" 
+                        Margin="0,0,10,0"/>
+                <Button Content="Назад" 
+                        Click="btnBack_Click" 
+                        Width="160" 
+                        Height="40" 
+                        Background="DeepPink" 
+                        Foreground="White" 
+                        BorderBrush="#FF1493" 
+                        BorderThickness="2"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
